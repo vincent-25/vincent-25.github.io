@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="8086汇编汇编语言汇编语言（assembly  language）是一种用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，亦称为符号语言。在汇编语言中，用助记符代替机器指令的操作码，用地址符号或标号代替指令或操作数的地址。在不同的设备中，汇编语言对应着不同的机器语言指令集，通过汇编过程转换成机器指令。特定的汇编语言和特定的机器语言指令集是一一对应的，不同平台之间不可直接移植。   目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8086汇编">
+<meta property="og:url" content="vincent.github.io/2020/04/28/8086%E6%B1%87%E7%BC%96/index.html">
+<meta property="og:site_name" content="myserendipity">
+<meta property="og:description" content="8086汇编汇编语言汇编语言（assembly  language）是一种用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，亦称为符号语言。在汇编语言中，用助记符代替机器指令的操作码，用地址符号或标号代替指令或操作数的地址。在不同的设备中，汇编语言对应着不同的机器语言指令集，通过汇编过程转换成机器指令。特定的汇编语言和特定的机器语言指令集是一一对应的，不同平台之间不可直接移植。   目">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://img2020.cnblogs.com/i-beta/1183448/202003/1183448-20200310120202515-921581016.png">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200428150812323.png">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200428150951351.png">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200428152744025.png">
+<meta property="og:image" content="https://doc.shiyanlou.com/userid12501labid332time1419944173776/wm">
+<meta property="og:image" content="https://doc.shiyanlou.com/userid12501labid332time1419948800662/wm">
+<meta property="og:image" content="https://doc.shiyanlou.com/document-uid12501labid332timestamp1458139296969.png/wm">
+<meta property="article:published_time" content="2020-04-28T14:57:08.000Z">
+<meta property="article:modified_time" content="2020-04-28T09:02:04.690Z">
+<meta property="article:author" content="serendipity">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2020.cnblogs.com/i-beta/1183448/202003/1183448-20200310120202515-921581016.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="vincent.github.io/2020/04/28/8086汇编/"/>
+
+
+
+
+
+  <title>8086汇编 | myserendipity</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">myserendipity</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凭澜</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="vincent.github.io/2020/04/28/8086%E6%B1%87%E7%BC%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="serendipity">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="myserendipity">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">8086汇编</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-28T22:57:08+08:00">
+                2020-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="8086汇编"><a href="#8086汇编" class="headerlink" title="8086汇编"></a>8086汇编</h1><h5 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h5><p>汇编语言（assembly  language）是一种用于电子计算机、微处理器、微控制器或其他可编程器件的低级语言，亦称为符号语言。在汇编语言中，用<strong>助记符</strong>代替机器指令的操作码，用<strong>地址符号或标号</strong>代替指令或操作数的地址。在不同的设备中，汇编语言对应着不同的机器语言指令集，通过汇编过程转换成机器指令。特定的汇编语言和特定的机器语言指令集是一一对应的，不同平台之间不可直接移植。</p>
+<p><img src="https://img2020.cnblogs.com/i-beta/1183448/202003/1183448-20200310120202515-921581016.png" alt="img"></p>
+<ul>
+<li><p>目前讨论较多的汇编语言</p>
+<p>8086汇编（8086处理器是16bit的CPU）</p>
+<p>Win32汇编</p>
+<p>Win64汇编</p>
+<p>AT&amp;T汇编（Mac、iOS模拟器）</p>
+<p>ARM汇编（嵌入式、iOS设备）</p>
+</li>
+</ul>
+<h5 id="8086CPU"><a href="#8086CPU" class="headerlink" title="8086CPU"></a>8086CPU</h5><p><em>Intel 8086是一个由Intel于1978年所设计的16位微处理器芯片，是x86架构的鼻祖。不久之后，Intel 就推出了  Intel 8088  (一个拥有8位外部数据总线的微处理器)。它是以8080和8085的设计为基础，拥有类似的寄存器组，但是地址总线扩充为20位。总线接口单元(Bus Interface Unit)透过6字节预存(prefetch) 的队列(queue)位指令给执行单元(Execution  Unit)，所以取指令和执行是同步的，8086  CPU有20条地址线，可直接寻址1MB的存储空间，每一个存储单元可以存放一个字节（8位）二进制信息。</em></p>
+<p>　　<em>对于现今的机器来讲,8086CPU它已经属于古玩。但是,现在的任何一台PC机中的微处理器,只要是和  Intel兼容的系列,都可以8086的方式进行工作。可以将一个奔腾系列的微处理器当作一个快速的8086微处理器来用。整个奔腾PC的工作情况也是如此,可以当作一台高速的8086PC来用。</em></p>
+<h5 id="机器语言到汇编语言"><a href="#机器语言到汇编语言" class="headerlink" title="机器语言到汇编语言"></a>机器语言到汇编语言</h5><ul>
+<li><p>机器语言是机器指令的集合、是一台机器可以正确执行的命令、由一串二进制数表示，例 01010000。</p>
+</li>
+<li><p>汇编语言</p>
+<ul>
+<li>汇编语言的主体是汇编指令</li>
+<li>汇编指令和机器指令的差别在于指令的表示方法上</li>
+<li>汇编指令是机器指令便于记忆的书写格式</li>
+<li>汇编指令是机器指令的助记符</li>
+</ul>
+</li>
+<li><p>机器指令与汇编指令对比</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">机器指令： 1000100111011000</span><br><span class="line">操作：将寄存器BX的内容送到AX中</span><br><span class="line">汇编指令：MOV AX, BX</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200428150812323.png" alt="image-20200428150812323"></p>
+</li>
+</ul>
+<p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200428150951351.png" alt="image-20200428150951351"></p>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p><strong>8086寄存器组</strong></p>
+<p>8086寄存器都是16位的寄存器，根据用途可以分为4种类型</p>
+<ul>
+<li><p>数据寄存器</p>
+</li>
+<li><p>地址寄存器</p>
+</li>
+<li><p>段寄存器</p>
+</li>
+<li><p>控制寄存器</p>
+</li>
+</ul>
+<p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200428152744025.png" alt="image-20200428152744025"></p>
+<h6 id="数据寄存器"><a href="#数据寄存器" class="headerlink" title="数据寄存器"></a>数据寄存器</h6><p>数据寄存器中每个寄存器又可以分为2个8位的寄存器</p>
+<p>分别为AH,AL,BH,BL,CH,CL,DH,DL.</p>
+<p>H表示高字节（高8位）寄存器</p>
+<p>L表示低字节（低8位）寄存器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：用 AX 寄存器存放一个字 1234H，表示为 (AX)&#x3D;1234H，即高字节 12 放在 AH，低字节 34 放在 AL 中。</span><br></pre></td></tr></table></figure>
+
+<h6 id="地址寄存器"><a href="#地址寄存器" class="headerlink" title="地址寄存器"></a>地址寄存器</h6><p>地址寄存器包括指针和变址寄存器（SP,BP,SI,DI）四个16位的寄存器</p>
+<p>可以用来存放存储器操作数的偏移地址，也可以作为通用寄存器使用</p>
+<h6 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h6><p>8086CPU有4个16位的段寄存器   ，分别是：</p>
+<p>CS代码段寄存器</p>
+<p>DS数据段寄存器</p>
+<p>ES附加段寄存器</p>
+<p>SS堆栈段寄存器</p>
+<h6 id="控制寄存器"><a href="#控制寄存器" class="headerlink" title="控制寄存器"></a>控制寄存器</h6><p>控制寄存器包括IP和FLAGS（又称为PSW程序状态字）两个16位寄存器，用于控制程序的执行</p>
+<p>IP指令指针寄存器，用于存放代码段中的偏移地址，指出当前正在执行指令的下一条指令所在单元的偏移地址</p>
+<p>FLAGS标志寄存器中的某位代表CPU的1个标志，表示出CPU的某种执行状态，最低位为D0，最高位为D15。</p>
+<p>8086CPU的标志寄存器共有9个标志，分别为6个条件码标志和3个控制标志</p>
+<p><img src="https://doc.shiyanlou.com/userid12501labid332time1419944173776/wm" alt="img"></p>
+<p>条件码标志</p>
+<p>CF进位标志，当指令执行结果的最高位向前有进位时，CF为1，否则CF为0</p>
+<p>SF符号标志，当指令执行结果的最高位（符号位）为负时，SF=1,否则SF=0</p>
+<p>ZF零标志，当指令执行结果为0时，ZF=1，结果不为0时，ZF=0</p>
+<p>OF溢出标志，当指令执行结有溢出（超过了数的表示范围）时，OF=1,否则OF=0</p>
+<p>AF辅助进位标志，当指令执行结果的第三位（半字节）向前有进位时，AF=1，否则AF=0</p>
+<p>PF奇偶标志，当指令执行结果中1的个数为偶数时，PF=1,否则PF=0</p>
+<p>控制标志</p>
+<p>DF方向标志，执行串处理指令时，若设置DF=0,存储单元的地址寄存器的值自动增加，若设置DF=1，存储单元的地址寄存器的值自动减小</p>
+<p>IF中断标志，若设置IF=1，允许CPU响应 可屏蔽中断，IF=0则不响应</p>
+<p>TF陷阱标志，在DEBUG调试时，TF=1，采用单步执行方式，即陷入陷阱，TF=0，正常执行程序</p>
+<p>例：两个二进制数相加运算，有关标志位自动发生变化。</p>
+<p><img src="https://doc.shiyanlou.com/userid12501labid332time1419948800662/wm" alt="img"></p>
+<p>根据计算结果可知 CPU 会自动地把标志位设为：CF=0，SF=1，ZF=0，OF=0，PF=0，即无进位，结果为负数，结果不为 0，没有溢出，奇数个 1。</p>
+<p>对溢出的判断也可以从简单的角度理解，因为进行运算的二进制数是补码，可看出本题是一个负数和一个正数相加，结果为负数，不溢出。若两个正数相加，结果为负数，或者两个负数相加，结果为正数，那都是溢出了，说明 8 位补码已经表示不了该结果。</p>
+<h6 id="DEBUG-下的标志位表示"><a href="#DEBUG-下的标志位表示" class="headerlink" title="DEBUG 下的标志位表示"></a>DEBUG 下的标志位表示</h6><p>在 DEBUG 调试环境下以字母缩写的形式表示各个标志位的状态。进入 DEBUG 后，<strong>用 R 命令查看寄存器状态</strong>时，可以看到除了陷阱标志以外的标志位的状态。</p>
+<p><img src="https://doc.shiyanlou.com/document-uid12501labid332timestamp1458139296969.png/wm" alt="此处输入图片的描述"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/28/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-python-trade/" rel="next" title="'攻防世界-python-trade'">
+                <i class="fa fa-chevron-left"></i> '攻防世界-python-trade'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">serendipity</p>
+              <p class="site-description motion-element" itemprop="description">自己搭的个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#8086汇编"><span class="nav-number">1.</span> <span class="nav-text">8086汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#汇编语言"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">汇编语言</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8086CPU"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">8086CPU</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#机器语言到汇编语言"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">机器语言到汇编语言</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器"><span class="nav-number">1.0.1.</span> <span class="nav-text">寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#数据寄存器"><span class="nav-number">1.0.1.0.0.1.</span> <span class="nav-text">数据寄存器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#地址寄存器"><span class="nav-number">1.0.1.0.0.2.</span> <span class="nav-text">地址寄存器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#段寄存器"><span class="nav-number">1.0.1.0.0.3.</span> <span class="nav-text">段寄存器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#控制寄存器"><span class="nav-number">1.0.1.0.0.4.</span> <span class="nav-text">控制寄存器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DEBUG-下的标志位表示"><span class="nav-number">1.0.1.0.0.5.</span> <span class="nav-text">DEBUG 下的标志位表示</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">serendipity</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
