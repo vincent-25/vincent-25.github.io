@@ -331,13 +331,13 @@
 <p>用ida打开，shift+f12找到字符串<br>ctrl+x 然后  f5找到c语言函数</p>
 <a id="more"></a>
 
-<p><img src="https://img2020.cnblogs.com/blog/1990899/202004/1990899-20200414155655346-1449495129.png" alt><br>看函数：<br>先定义了一些char类型的变量，下面赋值<br><img src="https://img2020.cnblogs.com/blog/1990899/202004/1990899-20200414155818537-333453324.png" alt><br>最后进行运算</p>
-<p><img src="https://img2020.cnblogs.com/blog/1990899/202004/1990899-20200414160429424-1321439648.png" alt><br>变成同一行</p>
+<p><img src="https://img2020.cnblogs.com/blog/1990899/202004/1990899-20200414155655346-1449495129.png" alt=""><br>看函数：<br>先定义了一些char类型的变量，下面赋值<br><img src="https://img2020.cnblogs.com/blog/1990899/202004/1990899-20200414155818537-333453324.png" alt=""><br>最后进行运算</p>
+<p><img src="https://img2020.cnblogs.com/blog/1990899/202004/1990899-20200414160429424-1321439648.png" alt=""><br>变成同一行</p>
 <p>按住alt选中前几个字符删去，最后得到两个数组<br>总而言之，就是用python写个脚本，把ida上的运算算出来</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D;[123,32,18,98,119,108,65,41,124,80,125,38,124,111,74,49,83,108,94,108,84,6,96,83,44,121,104,110,32,95,117,101,99,123,127,119,96,48,107,71,92,29,81,107,90,85,64,12,43,76,86,13,114,1,117,126,0]</span><br><span class="line">b&#x3D;[18,64,98,5,2,4,6,3,6,48,49,65,32,12,48,65,31,78,62,32,49,32,1,57,96,3,21,9,4,62,3,5,4,1,2,3,44,65,78,32,16,97,54,16,44,52,32,64,89,45,32,65,15,34,18,16,0]</span><br><span class="line">flag&#x3D;&quot;&quot;</span><br><span class="line">for i in range(56):</span><br><span class="line">	a[i]&#x3D;a[i]^b[i]</span><br><span class="line">	a[i]&#x3D;a[i]^(0x13)</span><br><span class="line">	flag+&#x3D;chr(a[i])</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">记得数组用[](记不清了，python数组是&#123;&#125;还是[])</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img2020.cnblogs.com/blog/1990899/202004/1990899-20200414195036623-1376529462.png" alt></p>
+<p><img src="https://img2020.cnblogs.com/blog/1990899/202004/1990899-20200414195036623-1376529462.png" alt=""></p>
 
       
     </div>
@@ -451,7 +451,7 @@
               
                 <a href="../../../../archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

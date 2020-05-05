@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="8086汇编8086汇编基本指令数据传送MOV 赋值指令 MOV DST,SRC">
+<meta name="description" content="8086汇编汇编语言语句汇编语言有两类语句  执行性语句 说明性语句  执行性语句 表达处理器指令，实现功能 标号: 硬指令助记符 操作数 ,操作数     ；注释  说明性语句 表达伪指令，控制汇编方式 名字   伪指令助记符   参数，参数，   ；注释  区分标号与名字：标号后面有：，名字后面没有  标号指的是指令（处理器指令在主存中的逻辑地址） 名字（自己定义的）指的是变量名，段名，子程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="8086汇编">
 <meta property="og:url" content="vincent.github.io/2020/04/29/8086%E6%B1%87%E7%BC%963/index.html">
 <meta property="og:site_name" content="myserendipity">
-<meta property="og:description" content="8086汇编8086汇编基本指令数据传送MOV 赋值指令 MOV DST,SRC">
+<meta property="og:description" content="8086汇编汇编语言语句汇编语言有两类语句  执行性语句 说明性语句  执行性语句 表达处理器指令，实现功能 标号: 硬指令助记符 操作数 ,操作数     ；注释  说明性语句 表达伪指令，控制汇编方式 名字   伪指令助记符   参数，参数，   ；注释  区分标号与名字：标号后面有：，名字后面没有  标号指的是指令（处理器指令在主存中的逻辑地址） 名字（自己定义的）指的是变量名，段名，子程序">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501174902590.png">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501175133228.png">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501175258801.png">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501175328115.png">
 <meta property="article:published_time" content="2020-04-28T17:26:05.000Z">
-<meta property="article:modified_time" content="2020-04-28T15:19:53.189Z">
+<meta property="article:modified_time" content="2020-05-01T09:55:33.510Z">
 <meta property="article:author" content="serendipity">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501174902590.png">
 
 
 
@@ -262,7 +267,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-28T17:26:05Z">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-29T01:26:05+08:00">
                 2020-04-28
               </time>
             
@@ -322,9 +327,81 @@
       
 
       
-        <h2 id="8086汇编"><a href="#8086汇编" class="headerlink" title="8086汇编"></a>8086汇编</h2><h3 id="8086汇编基本指令"><a href="#8086汇编基本指令" class="headerlink" title="8086汇编基本指令"></a>8086汇编基本指令</h3><h4 id="数据传送"><a href="#数据传送" class="headerlink" title="数据传送"></a>数据传送</h4><h6 id="MOV"><a href="#MOV" class="headerlink" title="MOV"></a>MOV</h6><ul>
-<li>赋值指令</li>
-<li>MOV DST,SRC</li>
+        <h2 id="8086汇编"><a href="#8086汇编" class="headerlink" title="8086汇编"></a>8086汇编</h2><h3 id="汇编语言语句"><a href="#汇编语言语句" class="headerlink" title="汇编语言语句"></a>汇编语言语句</h3><p>汇编语言有两类语句</p>
+<ul>
+<li>执行性语句</li>
+<li>说明性语句</li>
+</ul>
+<h5 id="执行性语句"><a href="#执行性语句" class="headerlink" title="执行性语句"></a>执行性语句</h5><ul>
+<li>表达处理器指令，实现功能</li>
+<li>标号: 硬指令助记符 操作数 ,操作数     ；注释</li>
+</ul>
+<h5 id="说明性语句"><a href="#说明性语句" class="headerlink" title="说明性语句"></a>说明性语句</h5><ul>
+<li>表达伪指令，控制汇编方式</li>
+<li>名字   伪指令助记符   参数，参数，   ；注释</li>
+</ul>
+<p><em>区分标号与名字：标号后面有：，名字后面没有</em></p>
+<ol>
+<li><p>标号指的是指令（处理器指令在主存中的逻辑地址）</p>
+<p>名字（自己定义的）指的是变量名，段名，子程序名等</p>
+</li>
+<li><p>助记符：帮助记忆指令功能的符号</p>
+<p>硬指令助记符表示处理器指令 （示例：MOV）</p>
+<p>伪指令助记符表示一个汇编命令</p>
+<p>（示例：字节变量定义    BYTE（或DB）msg byte ‘hello’,13,10,0）</p>
+</li>
+<li><p>数据部分</p>
+</li>
+<li><p>注释     以  ;  开头</p>
+</li>
+</ol>
+<p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501174902590.png" alt="image-20200501174902590"></p>
+<h3 id="汇编语言框架"><a href="#汇编语言框架" class="headerlink" title="汇编语言框架"></a>汇编语言框架</h3><p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501175133228.png" alt="image-20200501175133228"></p>
+<p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501175258801.png" alt="image-20200501175258801"></p>
+<p>模板文件</p>
+<p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501175328115.png" alt="image-20200501175328115"></p>
+<h3 id="8086汇编基本指令"><a href="#8086汇编基本指令" class="headerlink" title="8086汇编基本指令"></a>8086汇编基本指令</h3><p>从功能分类上来说，一共可分为：</p>
+<p>一、 数据传送指令：MOV、XCHG、LEA、LDS、LES、PUSH、POP、PUSHF、POPF、CBW、CWD、CWDE。</p>
+<p>二、 算术指令：ADD、ADC、INC、SUB、SBB、DEC、CMP、MUL、DIV、DAA、DAS、AAA、AAS。</p>
+<p>三、 逻辑指令：AND、OR、XOR、NOT、TEST、SHL、SAL、SHR、SAR、RCL、RCR、ROL、ROR。</p>
+<p>四、 控制转移指令：JMP、Jcc、JCXZ、LOOP、LOOPZ、LOOPNZ、LOOPNE、CALL、RET、INT。</p>
+<p>五、 串操作指令：MOVS、LODS、STOS、CMPS、SCAS。</p>
+<p>六、 标志处理指令：CLC、STC、CLD、STD。</p>
+<p>七、 32位CPU新增指令</p>
+<a id="more"></a>
+
+<h4 id="数据传送"><a href="#数据传送" class="headerlink" title="数据传送"></a>数据传送</h4><h6 id="MOV"><a href="#MOV" class="headerlink" title="MOV"></a>MOV</h6><ul>
+<li><p>赋值指令</p>
+</li>
+<li><p>写法：MOV target,source</p>
+</li>
+<li><p>把源操作数source的值复制到target中去，source值不变</p>
+</li>
+<li><p>注意：</p>
+<ul>
+<li><p>target和source必须类型匹配</p>
+</li>
+<li><p>target不能是CS（代码段寄存器）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="XCHG"><a href="#XCHG" class="headerlink" title="XCHG"></a>XCHG</h6><ul>
+<li><p>交换</p>
+</li>
+<li><p>写法：XCHG object1,object2</p>
+</li>
+<li><p>交换object1和2的值</p>
+</li>
+</ul>
+<h6 id="LEA"><a href="#LEA" class="headerlink" title="LEA"></a>LEA</h6><ul>
+<li>装入有效<strong>地址</strong></li>
+<li>LEZ reg16,mem</li>
+<li>将有效地址mem的值装入到16位的通用寄存器中</li>
+</ul>
+<h6 id="LDS-LES-LGS-LSS"><a href="#LDS-LES-LGS-LSS" class="headerlink" title="LDS/LES/LGS/LSS"></a>LDS/LES/LGS/LSS</h6><ul>
+<li>装入值</li>
+<li>LDS reg16,mem32</li>
 <li></li>
 </ul>
 
@@ -361,8 +438,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="../test/" rel="prev" title="test">
-                test <i class="fa fa-chevron-right"></i>
+              <a href="../../30/BUUCTF-xor/" rel="prev" title="BUUCTF xor">
+                BUUCTF xor <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -440,7 +517,7 @@
               
                 <a href="../../../../archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -486,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#8086汇编"><span class="nav-number">1.</span> <span class="nav-text">8086汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8086汇编基本指令"><span class="nav-number">1.1.</span> <span class="nav-text">8086汇编基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传送"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据传送</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#MOV"><span class="nav-number">1.1.1.0.1.</span> <span class="nav-text">MOV</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#8086汇编"><span class="nav-number">1.</span> <span class="nav-text">8086汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言语句"><span class="nav-number">1.1.</span> <span class="nav-text">汇编语言语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#执行性语句"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">执行性语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说明性语句"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">说明性语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言框架"><span class="nav-number">1.2.</span> <span class="nav-text">汇编语言框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8086汇编基本指令"><span class="nav-number">1.3.</span> <span class="nav-text">8086汇编基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传送"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据传送</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#MOV"><span class="nav-number">1.3.1.0.1.</span> <span class="nav-text">MOV</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#XCHG"><span class="nav-number">1.3.1.0.2.</span> <span class="nav-text">XCHG</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LEA"><span class="nav-number">1.3.1.0.3.</span> <span class="nav-text">LEA</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LDS-LES-LGS-LSS"><span class="nav-number">1.3.1.0.4.</span> <span class="nav-text">LDS&#x2F;LES&#x2F;LGS&#x2F;LSS</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

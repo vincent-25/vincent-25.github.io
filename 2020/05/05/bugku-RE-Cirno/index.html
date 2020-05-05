@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="../../../../lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="../../../../lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="../../../../css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../../images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../../images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="../../../../images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="bugku-RE_Cirno下载下来是一张图片，因为是逆向题，考虑分离出文件 foremost分离，解压得到exe文件  推测最后有栅栏加密 无壳，32位 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859int __cdecl m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bugku-RE_Cirno">
+<meta property="og:url" content="vincent.github.io/2020/05/05/bugku-RE-Cirno/index.html">
+<meta property="og:site_name" content="myserendipity">
+<meta property="og:description" content="bugku-RE_Cirno下载下来是一张图片，因为是逆向题，考虑分离出文件 foremost分离，解压得到exe文件  推测最后有栅栏加密 无壳，32位 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859int __cdecl m">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200505115411860.png">
+<meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200505120802580.png">
+<meta property="article:published_time" content="2020-05-05T11:49:14.000Z">
+<meta property="article:modified_time" content="2020-05-05T07:33:14.426Z">
+<meta property="article:author" content="serendipity">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200505115411860.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="vincent.github.io/2020/05/05/bugku-RE-Cirno/"/>
+
+
+
+
+
+  <title>bugku-RE_Cirno | myserendipity</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">myserendipity</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">凭澜</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="vincent.github.io">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="serendipity">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="../../../../images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="myserendipity">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">bugku-RE_Cirno</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-05T19:49:14+08:00">
+                2020-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="../../../../categories/ctf-re/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf-re</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="bugku-RE-Cirno"><a href="#bugku-RE-Cirno" class="headerlink" title="bugku-RE_Cirno"></a>bugku-RE_Cirno</h1><p>下载下来是一张图片，因为是逆向题，考虑分离出文件</p>
+<p>foremost分离，解压得到exe文件</p>
+<p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200505115411860.png" alt="image-20200505115411860"></p>
+<p>推测最后有栅栏加密</p>
+<p>无壳，32位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main_0()</span><br><span class="line">&#123;</span><br><span class="line">  int v0; &#x2F;&#x2F; edx</span><br><span class="line">  signed int i; &#x2F;&#x2F; [esp+54h] [ebp-64h]</span><br><span class="line">  int v3; &#x2F;&#x2F; [esp+58h] [ebp-60h]</span><br><span class="line">  int v4; &#x2F;&#x2F; [esp+5Ch] [ebp-5Ch]</span><br><span class="line">  int v5; &#x2F;&#x2F; [esp+60h] [ebp-58h]</span><br><span class="line">  int v6; &#x2F;&#x2F; [esp+64h] [ebp-54h]</span><br><span class="line">  int v7; &#x2F;&#x2F; [esp+68h] [ebp-50h]</span><br><span class="line">  int v8; &#x2F;&#x2F; [esp+6Ch] [ebp-4Ch]</span><br><span class="line">  int v9; &#x2F;&#x2F; [esp+70h] [ebp-48h]</span><br><span class="line">  int v10; &#x2F;&#x2F; [esp+74h] [ebp-44h]</span><br><span class="line">  int v11; &#x2F;&#x2F; [esp+78h] [ebp-40h]</span><br><span class="line">  int v12; &#x2F;&#x2F; [esp+7Ch] [ebp-3Ch]</span><br><span class="line">  int v13; &#x2F;&#x2F; [esp+80h] [ebp-38h]</span><br><span class="line">  int v14; &#x2F;&#x2F; [esp+84h] [ebp-34h]</span><br><span class="line">  int v15; &#x2F;&#x2F; [esp+88h] [ebp-30h]</span><br><span class="line">  int v16; &#x2F;&#x2F; [esp+8Ch] [ebp-2Ch]</span><br><span class="line">  int v17; &#x2F;&#x2F; [esp+90h] [ebp-28h]</span><br><span class="line">  int v18; &#x2F;&#x2F; [esp+94h] [ebp-24h]</span><br><span class="line">  int v19; &#x2F;&#x2F; [esp+98h] [ebp-20h]</span><br><span class="line">  int v20; &#x2F;&#x2F; [esp+9Ch] [ebp-1Ch]</span><br><span class="line">  int v21; &#x2F;&#x2F; [esp+A0h] [ebp-18h]</span><br><span class="line">  int v22; &#x2F;&#x2F; [esp+A4h] [ebp-14h]</span><br><span class="line">  int v23; &#x2F;&#x2F; [esp+A8h] [ebp-10h]</span><br><span class="line">  int v24; &#x2F;&#x2F; [esp+ACh] [ebp-Ch]</span><br><span class="line">  int v25; &#x2F;&#x2F; [esp+B0h] [ebp-8h]</span><br><span class="line">  int v26; &#x2F;&#x2F; [esp+B4h] [ebp-4h]</span><br><span class="line"></span><br><span class="line">  v3 &#x3D; 115;</span><br><span class="line">  v4 &#x3D; 94;</span><br><span class="line">  v5 &#x3D; 97;</span><br><span class="line">  v6 &#x3D; 114;</span><br><span class="line">  v7 &#x3D; 103;</span><br><span class="line">  v8 &#x3D; 47;</span><br><span class="line">  v9 &#x3D; 107;</span><br><span class="line">  v10 &#x3D; 114;</span><br><span class="line">  v11 &#x3D; 65;</span><br><span class="line">  v12 &#x3D; 48;</span><br><span class="line">  v13 &#x3D; 49;</span><br><span class="line">  v14 &#x3D; 105;</span><br><span class="line">  v15 &#x3D; 117;</span><br><span class="line">  v16 &#x3D; 118;</span><br><span class="line">  v17 &#x3D; 101;</span><br><span class="line">  v18 &#x3D; 48;</span><br><span class="line">  v19 &#x3D; 113;</span><br><span class="line">  v20 &#x3D; 95;</span><br><span class="line">  v21 &#x3D; 99;</span><br><span class="line">  v22 &#x3D; 47;</span><br><span class="line">  v23 &#x3D; 92;</span><br><span class="line">  v24 &#x3D; 116;</span><br><span class="line">  v25 &#x3D; 93;</span><br><span class="line">  v26 &#x3D; 102;</span><br><span class="line">  for ( i &#x3D; 0; i &lt; 24; ++i )</span><br><span class="line">    v0 &#x3D; *(&amp;v3 + i) + 9;</span><br><span class="line">  printf(&amp;byte_422FAC);</span><br><span class="line">  system(&quot;pause&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>这个反编译有错误</p>
+<p><img src="C:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200505120802580.png" alt="image-20200505120802580"></p>
+<p>还有xor，add</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">s = [<span class="number">115</span>, <span class="number">94</span>, <span class="number">97</span>, <span class="number">114</span>, <span class="number">103</span>, <span class="number">47</span>, <span class="number">107</span>, <span class="number">114</span>, <span class="number">65</span>, <span class="number">48</span>, <span class="number">49</span>, <span class="number">105</span>, <span class="number">117</span>, <span class="number">118</span>, <span class="number">101</span>, <span class="number">48</span>, <span class="number">113</span>, <span class="number">95</span>, <span class="number">99</span>, <span class="number">47</span>, <span class="number">92</span>, <span class="number">116</span>, <span class="number">93</span>, <span class="number">102</span>]</span><br><span class="line">res = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">24</span>):</span><br><span class="line">	res += chr((s[i]+<span class="number">9</span>)^<span class="number">9</span>)</span><br><span class="line"><span class="comment">#end = '':保证输出在同一行</span></span><br><span class="line"><span class="comment">#   |gj&#123;p8t&#123;J9:r~n9zhl8e&#125;fo</span></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line">flag = <span class="string">''</span>.join(res[::<span class="number">-1</span>])</span><br><span class="line"><span class="comment">#因为提示了倒序</span></span><br><span class="line">print(flag)</span><br><span class="line"><span class="comment">#  fotl1eas0gvw&#123;30Cr&#125;1yrcnu</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="../../02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-no-strings-attached/" rel="next" title="攻防世界 no-strings-attached">
+                <i class="fa fa-chevron-left"></i> 攻防世界 no-strings-attached
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">serendipity</p>
+              <p class="site-description motion-element" itemprop="description">自己搭的个人博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="../../../../archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bugku-RE-Cirno"><span class="nav-number">1.</span> <span class="nav-text">bugku-RE_Cirno</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">serendipity</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="../../../../js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="../../../../js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
