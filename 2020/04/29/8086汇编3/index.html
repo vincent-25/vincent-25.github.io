@@ -91,7 +91,7 @@
 <meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501175258801.png">
 <meta property="og:image" content="c:%5CUsers%5CVincent%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200501175328115.png">
 <meta property="article:published_time" content="2020-04-28T17:26:05.000Z">
-<meta property="article:modified_time" content="2020-05-01T09:55:33.510Z">
+<meta property="article:modified_time" content="2020-05-07T11:49:41.377Z">
 <meta property="article:author" content="serendipity">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
@@ -396,15 +396,193 @@
 </ul>
 <h6 id="LEA"><a href="#LEA" class="headerlink" title="LEA"></a>LEA</h6><ul>
 <li>装入有效<strong>地址</strong></li>
-<li>LEZ reg16,mem</li>
-<li>将有效地址mem的值装入到16位的通用寄存器中</li>
+<li>LEZ  REG,MEM</li>
+<li>将MEM的偏移地址送到REG中</li>
 </ul>
-<h6 id="LDS-LES-LGS-LSS"><a href="#LDS-LES-LGS-LSS" class="headerlink" title="LDS/LES/LGS/LSS"></a>LDS/LES/LGS/LSS</h6><ul>
+<h6 id="LDS-LGS-LSS"><a href="#LDS-LGS-LSS" class="headerlink" title="LDS/LGS/LSS"></a>LDS/LGS/LSS</h6><ul>
 <li>装入值</li>
 <li>LDS reg16,mem32</li>
-<li></li>
+<li>将mem指向的地址，高位放在DS中，低位存放到reg中 </li>
 </ul>
-
+<h6 id="LES"><a href="#LES" class="headerlink" title="LES"></a>LES</h6><ul>
+<li>LES reg,mem</li>
+<li>把mem指向的地址，高位存放在DS中，低位存放在reg中</li>
+</ul>
+<h6 id="PUSH"><a href="#PUSH" class="headerlink" title="PUSH"></a>PUSH</h6><ul>
+<li>入栈</li>
+<li>PUSH SRC</li>
+<li>将SRC入栈</li>
+<li>注意：只能对字操作</li>
+</ul>
+<h6 id="POP"><a href="#POP" class="headerlink" title="POP"></a>POP</h6><ul>
+<li>出栈</li>
+<li>POP DST</li>
+<li>将栈顶元素出栈赋值给DST</li>
+</ul>
+<h6 id="IN"><a href="#IN" class="headerlink" title="IN"></a>IN</h6><ul>
+<li>IN DST,SRC</li>
+<li>从SRC端口读取一个字节/字到DST中</li>
+</ul>
+<h6 id="OUT"><a href="#OUT" class="headerlink" title="OUT"></a>OUT</h6><ul>
+<li>OUT DST,SRC</li>
+<li>将SRC中的数据送到DST短空中</li>
+</ul>
+<h6 id="XLAT"><a href="#XLAT" class="headerlink" title="XLAT"></a>XLAT</h6><ul>
+<li>取表指令</li>
+<li>XLAT</li>
+<li>以DS:[BX+AL]为地址读取一个字节的数据送到AL中</li>
+</ul>
+<h6 id="PUSHF"><a href="#PUSHF" class="headerlink" title="PUSHF"></a>PUSHF</h6><ul>
+<li>PUSHF</li>
+<li>将PSW进栈</li>
+</ul>
+<h6 id="POPF"><a href="#POPF" class="headerlink" title="POPF"></a>POPF</h6><ul>
+<li>POPF</li>
+<li>将栈顶元素送到PSW</li>
+</ul>
+<h6 id="LAHF"><a href="#LAHF" class="headerlink" title="LAHF"></a>LAHF</h6><ul>
+<li>LAHF</li>
+<li>将PSW的低八位送到AH中</li>
+</ul>
+<h6 id="SAHF"><a href="#SAHF" class="headerlink" title="SAHF"></a>SAHF</h6><ul>
+<li>SAHF</li>
+<li>将AH写入PSW的低八位</li>
+</ul>
+<h4 id="算术"><a href="#算术" class="headerlink" title="算术"></a>算术</h4><h6 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h6><ul>
+<li>ADD DST,SRC</li>
+<li>DST&lt;-DST+SRC           //DST=DST+SRC</li>
+</ul>
+<h6 id="ADC"><a href="#ADC" class="headerlink" title="ADC"></a>ADC</h6><ul>
+<li><p>带进位加法指令</p>
+</li>
+<li><p>ADC DST,SRC</p>
+</li>
+<li><p>DST&lt;-DST+SRC+CF</p>
+</li>
+</ul>
+<h6 id="INC"><a href="#INC" class="headerlink" title="INC"></a>INC</h6><ul>
+<li><p>加1指令</p>
+</li>
+<li><p>INC DST</p>
+</li>
+<li><p>DST&lt;-DST+1</p>
+</li>
+</ul>
+<h6 id="SUB"><a href="#SUB" class="headerlink" title="SUB"></a>SUB</h6><ul>
+<li>减法指令</li>
+<li>SUB DST,SRC</li>
+<li>DST&lt;-DST-SRC</li>
+</ul>
+<h6 id="SBB"><a href="#SBB" class="headerlink" title="SBB"></a>SBB</h6><ul>
+<li><p>带借位减法指令</p>
+</li>
+<li><p>SBB DST,SRC</p>
+</li>
+<li><p>DST&lt;-DST-SRC-CF</p>
+</li>
+</ul>
+<h6 id="DEC"><a href="#DEC" class="headerlink" title="DEC"></a>DEC</h6><ul>
+<li>减1指令</li>
+<li>DEC OPR</li>
+<li>OPR&lt;-OPR-1</li>
+</ul>
+<h6 id="NEG"><a href="#NEG" class="headerlink" title="NEG"></a>NEG</h6><ul>
+<li>求补指令</li>
+<li>NEG OPR</li>
+<li>OPR&lt;-   -(OPR)</li>
+</ul>
+<h6 id="CMP"><a href="#CMP" class="headerlink" title="CMP"></a>CMP</h6><ul>
+<li>比较指令</li>
+<li>CMP OPR1,OPR2</li>
+<li>OPR1-OPR2</li>
+<li>结果不保存，但是状态保存在PSW中，达到依据运算结果去影响EFLAG标志位的效果</li>
+</ul>
+<h6 id="MUL"><a href="#MUL" class="headerlink" title="MUL"></a>MUL</h6><ul>
+<li><p>无符号数乘法</p>
+</li>
+<li><p>MUL SRC</p>
+</li>
+<li><p>操作：</p>
+<p>字节操作：(AX)&lt;-(AL)*(SRC)</p>
+<p>字操作：(DX,AX)&lt;-(AX)*(SRC)</p>
+<p>双字操作：(EDX,EAX)&lt;-(EAX)*(SRC)</p>
+</li>
+</ul>
+<h6 id="IMUL"><a href="#IMUL" class="headerlink" title="IMUL"></a>IMUL</h6><ul>
+<li>IMUL SRC</li>
+<li>有符号乘法</li>
+<li>DST&lt;-DST*SRC</li>
+</ul>
+<h6 id="DIV"><a href="#DIV" class="headerlink" title="DIV"></a>DIV</h6><ul>
+<li><p>无符号数除法</p>
+</li>
+<li><p>格式：DIV    SRC</p>
+</li>
+<li><p>功能：</p>
+<p>①字节操作：(AH) &lt;= (AX)/(SRC)的余数;      (AL) &lt;= (AX)/(SRC)的商</p>
+<p>②字操作：(DX) &lt;= (DX,AX)/(SRC)的余数;      (AX) &lt;= (DX,AX)/(SRC)的商</p>
+<p>③双字操作：(EDX) &lt;= (EDX,EAX)/(SRC)的余数;                                                            (EAX) &lt;= (EDX,EAX)/(SRC)的商</p>
+</li>
+</ul>
+<h6 id="IDIV"><a href="#IDIV" class="headerlink" title="IDIV"></a>IDIV</h6><ul>
+<li><p>无符号数除法</p>
+</li>
+<li><p>格式：IDIV    SRC</p>
+</li>
+<li><p>功能：</p>
+<p>①字节操作：(AH) &lt;= (AX)/(SRC)的余数;      (AL) &lt;= (AX)/(SRC)的商</p>
+<p>②字操作：(DX) &lt;= (DX,AX)/(SRC)的余数;      (AX) &lt;= (DX,AX)/(SRC)的商</p>
+<p>③双字操作：(EDX) &lt;= (EDX,EAX)/(SRC)的余数;                                                            (EAX) &lt;= (EDX,EAX)/(SRC)的商</p>
+</li>
+</ul>
+<h6 id="CBW"><a href="#CBW" class="headerlink" title="CBW"></a>CBW</h6><ul>
+<li><p>字节转化为字指令</p>
+</li>
+<li><p>CBW</p>
+</li>
+<li><p>将AL保持原值（有符号数）扩展到AX</p>
+<p>即如果(AL)的最高有效位为0,则(AH)=00;如(AL)的最高有效位为1,则(AH)=0FFH</p>
+</li>
+</ul>
+<h6 id="CWD"><a href="#CWD" class="headerlink" title="CWD"></a>CWD</h6><ul>
+<li>字转化为双字指令</li>
+<li>CWD</li>
+<li>AX的内容符号扩展到DX.即如(AX)的最高有效位为0,则(DX)=0;否则(DX)=0FFFFH.</li>
+</ul>
+<h4 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h4><h6 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h6><ul>
+<li><p>与</p>
+</li>
+<li><p>AND DST,SRC</p>
+</li>
+<li><p>DST&lt;-DST AND SRC</p>
+<p>将DST与SRC对应各位进行与运算后保留于DST</p>
+</li>
+</ul>
+<h6 id="OR"><a href="#OR" class="headerlink" title="OR"></a>OR</h6><ul>
+<li><p>OR DST,SRC</p>
+</li>
+<li><p>DST&lt;-DST OR SRC</p>
+<p>将DST和SRC对应各位进行“或”运算后结果保留于DST</p>
+</li>
+</ul>
+<h6 id="NOT"><a href="#NOT" class="headerlink" title="NOT"></a>NOT</h6><ul>
+<li><strong>描述</strong>：“非”逻辑运算</li>
+<li><strong>格式</strong>： NOT  DST</li>
+<li>功能：DST &lt;- NOT DST  将DST各位”取反”结果保留于DST</li>
+</ul>
+<h6 id="OR-1"><a href="#OR-1" class="headerlink" title="OR"></a>OR</h6><ul>
+<li><p>XOR DST,SRC</p>
+</li>
+<li><p>DST&lt;-DST XOR SRC</p>
+<p>将DST和SRC对应各位进行“异或”运算后结果保留于DST</p>
+</li>
+</ul>
+<h6 id="TEST"><a href="#TEST" class="headerlink" title="TEST"></a>TEST</h6><ul>
+<li>与</li>
+<li>TEST DST,SRC</li>
+<li>将DST和SRC各位进行与运算，结果状态影响PSW，但不影响DST,SRC的值</li>
+</ul>
+<h4 id="控制转移指令"><a href="#控制转移指令" class="headerlink" title="控制转移指令"></a>控制转移指令</h4>
       
     </div>
     
@@ -517,7 +695,7 @@
               
                 <a href="../../../../archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -563,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#8086汇编"><span class="nav-number">1.</span> <span class="nav-text">8086汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言语句"><span class="nav-number">1.1.</span> <span class="nav-text">汇编语言语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#执行性语句"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">执行性语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说明性语句"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">说明性语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言框架"><span class="nav-number">1.2.</span> <span class="nav-text">汇编语言框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8086汇编基本指令"><span class="nav-number">1.3.</span> <span class="nav-text">8086汇编基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传送"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据传送</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#MOV"><span class="nav-number">1.3.1.0.1.</span> <span class="nav-text">MOV</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#XCHG"><span class="nav-number">1.3.1.0.2.</span> <span class="nav-text">XCHG</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LEA"><span class="nav-number">1.3.1.0.3.</span> <span class="nav-text">LEA</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LDS-LES-LGS-LSS"><span class="nav-number">1.3.1.0.4.</span> <span class="nav-text">LDS&#x2F;LES&#x2F;LGS&#x2F;LSS</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#8086汇编"><span class="nav-number">1.</span> <span class="nav-text">8086汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言语句"><span class="nav-number">1.1.</span> <span class="nav-text">汇编语言语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#执行性语句"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">执行性语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说明性语句"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">说明性语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#汇编语言框架"><span class="nav-number">1.2.</span> <span class="nav-text">汇编语言框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8086汇编基本指令"><span class="nav-number">1.3.</span> <span class="nav-text">8086汇编基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传送"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据传送</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#MOV"><span class="nav-number">1.3.1.0.1.</span> <span class="nav-text">MOV</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#XCHG"><span class="nav-number">1.3.1.0.2.</span> <span class="nav-text">XCHG</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LEA"><span class="nav-number">1.3.1.0.3.</span> <span class="nav-text">LEA</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LDS-LGS-LSS"><span class="nav-number">1.3.1.0.4.</span> <span class="nav-text">LDS&#x2F;LGS&#x2F;LSS</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LES"><span class="nav-number">1.3.1.0.5.</span> <span class="nav-text">LES</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PUSH"><span class="nav-number">1.3.1.0.6.</span> <span class="nav-text">PUSH</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#POP"><span class="nav-number">1.3.1.0.7.</span> <span class="nav-text">POP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#IN"><span class="nav-number">1.3.1.0.8.</span> <span class="nav-text">IN</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OUT"><span class="nav-number">1.3.1.0.9.</span> <span class="nav-text">OUT</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#XLAT"><span class="nav-number">1.3.1.0.10.</span> <span class="nav-text">XLAT</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PUSHF"><span class="nav-number">1.3.1.0.11.</span> <span class="nav-text">PUSHF</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#POPF"><span class="nav-number">1.3.1.0.12.</span> <span class="nav-text">POPF</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LAHF"><span class="nav-number">1.3.1.0.13.</span> <span class="nav-text">LAHF</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SAHF"><span class="nav-number">1.3.1.0.14.</span> <span class="nav-text">SAHF</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算术"><span class="nav-number">1.3.2.</span> <span class="nav-text">算术</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#ADD"><span class="nav-number">1.3.2.0.1.</span> <span class="nav-text">ADD</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ADC"><span class="nav-number">1.3.2.0.2.</span> <span class="nav-text">ADC</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#INC"><span class="nav-number">1.3.2.0.3.</span> <span class="nav-text">INC</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SUB"><span class="nav-number">1.3.2.0.4.</span> <span class="nav-text">SUB</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SBB"><span class="nav-number">1.3.2.0.5.</span> <span class="nav-text">SBB</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DEC"><span class="nav-number">1.3.2.0.6.</span> <span class="nav-text">DEC</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#NEG"><span class="nav-number">1.3.2.0.7.</span> <span class="nav-text">NEG</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#CMP"><span class="nav-number">1.3.2.0.8.</span> <span class="nav-text">CMP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MUL"><span class="nav-number">1.3.2.0.9.</span> <span class="nav-text">MUL</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#IMUL"><span class="nav-number">1.3.2.0.10.</span> <span class="nav-text">IMUL</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DIV"><span class="nav-number">1.3.2.0.11.</span> <span class="nav-text">DIV</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#IDIV"><span class="nav-number">1.3.2.0.12.</span> <span class="nav-text">IDIV</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#CBW"><span class="nav-number">1.3.2.0.13.</span> <span class="nav-text">CBW</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#CWD"><span class="nav-number">1.3.2.0.14.</span> <span class="nav-text">CWD</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑"><span class="nav-number">1.3.3.</span> <span class="nav-text">逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AND"><span class="nav-number">1.3.3.0.1.</span> <span class="nav-text">AND</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OR"><span class="nav-number">1.3.3.0.2.</span> <span class="nav-text">OR</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#NOT"><span class="nav-number">1.3.3.0.3.</span> <span class="nav-text">NOT</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OR-1"><span class="nav-number">1.3.3.0.4.</span> <span class="nav-text">OR</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#TEST"><span class="nav-number">1.3.3.0.5.</span> <span class="nav-text">TEST</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控制转移指令"><span class="nav-number">1.3.4.</span> <span class="nav-text">控制转移指令</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
